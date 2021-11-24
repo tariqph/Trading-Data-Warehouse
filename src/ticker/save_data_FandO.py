@@ -78,7 +78,9 @@ if parser.has_section(section):
 kws = KiteTicker(db['api_key'], db['access_token'])
 
 def on_ticks(ws, ticks):
-    print('fando:' ,(ticks[0]['timestamp']), len(ticks))
+    
+    if(ticks[0]['timestamp'].minute == 0):
+    	print('fando:' ,(ticks[0]['timestamp']), len(ticks))
     
     # Callback to receive ticks.
     # logging.debug("Ticks: {}".format(ticks))

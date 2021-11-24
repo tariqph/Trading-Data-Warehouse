@@ -76,15 +76,11 @@ if parser.has_section(section):
 kws = KiteTicker(db['api_key'], db['access_token'])
 
 def on_ticks(ws, ticks):
-    # print('stock2:' ,(ticks[0]['timestamp']), len(ticks))
-    print(ticks[0]['timestamp'],len(ticks))
+
     # Callback to receive ticks.
-    # logging.debug("Ticks: {}".format(ticks))
-    
-    # global next_dict, prev_dict, prev_timestamp
-    
-    # for tick in ticks:
-    #     next_dict[tick['instrument_token']] = tick
+    if(ticks[0]['timestamp'].minute == 0):
+    	print('stock2:' ,(ticks[0]['timestamp']), len(ticks))
+
         
     insert_db.apply_async(args = (ticks,
                     # prev_timestamp,ticks[0]['timestamp'], prev_dict, next_dict, 

@@ -72,7 +72,9 @@ kws = KiteTicker(db['api_key'], db['access_token'])
 
 def on_ticks(ws, ticks):
     # Callback to receive ticks.
-    print('stock1:' ,(ticks[0]['timestamp']))
+
+    if(ticks[0]['timestamp'].minute == 0):
+    	print('stock1:' ,(ticks[0]['timestamp']), len(ticks))
     
         
     insert_db.apply_async(args = (ticks,
