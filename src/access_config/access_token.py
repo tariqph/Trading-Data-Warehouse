@@ -1,12 +1,17 @@
 from kiteconnect import KiteConnect
 from configparser import ConfigParser
 parser = ConfigParser()
+import os
 
 def access_token():
     '''
     This function sets the access token generated for the day and returns a kiteconnect object 
     '''
-    filename = 'database.ini'
+    # filename = 'database.ini'
+    # filename = "G:\DS - Competitions and projects\Zerodha\database.ini"
+    filename = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","database.ini"))
+    
+    
     section = 'zerodha'
     # read config file
     parser.read(filename)

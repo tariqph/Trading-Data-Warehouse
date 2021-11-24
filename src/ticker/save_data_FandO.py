@@ -62,19 +62,12 @@ from configparser import ConfigParser
 parser = ConfigParser()
 parser1 = ConfigParser()
 
-filename = "G:\DS - Competitions and projects\Zerodha\database.ini"
+# filename = "G:\DS - Competitions and projects\Zerodha\database.ini"
+filename = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","database.ini"))
 section = 'zerodha'
 # read config file
 parser.read(filename)
 
-# parser1.read('trades.ini')
-# try:
-#     last_traded_strike = parser1.getfloat('orders','strike')
-#     trade_count = parser1.getint('orders','trade_count')
-
-# except:
-#     print('Not traded yet')
-#     pass
 
 db = {}
 if parser.has_section(section):

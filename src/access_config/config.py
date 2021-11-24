@@ -1,8 +1,11 @@
 from configparser import ConfigParser
+import os
 
-def config(filename='db.ini', section='postgresql'):
+def config(filename='G:\DS - Competitions and projects\Zerodha\db.ini', section='postgresql'):
     ''' Reads the database configuration file and returns
     a connection parameters.'''
+    
+    filename = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","db.ini"))
     
     # create a parser
     parser = ConfigParser()

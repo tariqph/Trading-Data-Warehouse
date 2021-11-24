@@ -165,6 +165,46 @@ import json
 #         except JSONDecodeError:
 #             pass
 
-text = '[{"tr_time_str": "2021-11-17 19:00:40", "first_name": "Stephane", "last_name": "Ulrike", "city": "Arlington", "state": "CT", "product": "Product 5 XL", "amount": 687.85},{"tr_time_str": "2021-11-17 19:00:40", "first_name": "John", "last_name": "Doe", "city": "Arlington", "state": "CT", "product": "Product 5 XL", "amount": 687.85}]'
-a = json.dumps(text)
-print(type(a))
+# text = '[{"tr_time_str": "2021-11-17 19:00:40", "first_name": "Stephane", "last_name": "Ulrike", "city": "Arlington", "state": "CT", "product": "Product 5 XL", "amount": 687.85},{"tr_time_str": "2021-11-17 19:00:40", "first_name": "John", "last_name": "Doe", "city": "Arlington", "state": "CT", "product": "Product 5 XL", "amount": 687.85}]'
+# a = json.dumps(text)
+# print(type(a))
+
+import os
+
+# Generating Access Tokens
+os.system('''cd "G:\DS - Competitions and projects\Zerodha\src\\access_config" & python generate_access_token.py''')
+# Generating instrument tokens
+os.system('''cd "G:\DS - Competitions and projects\Zerodha\src\\access_config" & python generate_all_tokens.py''')
+
+import threading
+class myThread (threading.Thread):
+    def __init__(self, command):
+        threading.Thread.__init__(self)
+        self.cmd = command
+
+    def run(self):
+        print ("Starting " + self.cmd)
+        os.system(self.cmd)
+        print ("Exiting " + self.cmd)
+
+lstCmd=['''cd "G:\DS - Competitions and projects\Zerodha\src\publish_database" & 
+        celery -A publish_pubsub_f  worker -Q fando --concurrency=1  --loglevel=info 
+        -P  eventlet -n worker1@%h''', 
+        '''cd "G:\DS - Competitions and projects\Zerodha\src\publish_database" & 
+        celery -A publish_pubsub_f  worker -Q stock1 --concurrency=1  --loglevel=info 
+        -P  eventlet -n worker2@%h''',
+        '''cd "G:\DS - Competitions and projects\Zerodha\src\publish_database" & 
+        celery -A publish_pubsub_f  worker -Q stock2 --concurrency=1  --loglevel=info 
+        -P  eventlet -n worker3@%h''']   
+
+# Create new threads
+thread1 = myThread(lstCmd[0])
+thread2 = myThread(lstCmd[1])
+thread3 = myThread(lstCmd[2])
+# thread4 = myThread(lstCmd[3])
+
+# Start new Threads
+thread1.start()
+thread2.start()
+thread3.start()
+# thread4.start()

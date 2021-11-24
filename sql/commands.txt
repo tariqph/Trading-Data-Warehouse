@@ -1,3 +1,4 @@
+celery multi start 3 -c 1
 celery -A publish_pubsub_f  worker -Q fando --concurrency=1  --loglevel=info  -P  eventlet -n worker1@%h
 celery -A publish_pubsub_1  worker -Q stock1 --concurrency=1  --loglevel=info  -P  eventlet -n worker2@%h
 celery -A publish_pubsub_2  worker -Q stock2 --concurrency=1  --loglevel=info  -P  eventlet -n worker3@%h
