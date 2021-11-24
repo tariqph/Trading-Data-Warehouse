@@ -1,0 +1,21 @@
+# Virtual Env
+zerodaha_venv/
+
+# Output Data
+Data/Output/
+Data/Analysis/
+Archive/
+
+# Credentials
+gcloud/
+.vscode/
+database.ini
+db.ini
+test.ini
+
+#sqlite db
+db.sqlite3
+db,sqlite3
+
+# Logs
+logs/

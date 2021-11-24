@@ -1,0 +1,48 @@
+  - column: event_timestamp
+    description: Pub/Sub event timestamp
+    mode: REQUIRED
+    type: TIMESTAMP
+  - column: instrument_token
+    description: token of instrument
+    mode: NULLABLE
+    type: INT64
+  - column: last_price
+    description: LTP
+    mode: NULLABLE
+    type: FLOAT
+  - column: volume
+    description: Trade Volume
+    mode: NULLABLE
+    type: INT64
+  - column: buy_quantity
+    description: buy
+    mode: NULLABLE
+    type: STRING
+  - column: sell_quantity
+    description: sell
+    mode: NULLABLE
+    type: STRING
+  - column: oi
+    description: Open Interest
+    mode: NULLABLE
+    type: INT64
+  - column: timestamp
+    description: Product
+    mode: NULLABLE
+    type: STRING
+  - column: open
+    description: LTP
+    mode: NULLABLE
+    type: FLOAT
+  - column: high
+    description: LTP
+    mode: NULLABLE
+    type: FLOAT
+  - column: low
+    description: LTP
+    mode: NULLABLE
+    type: FLOAT
+  - column: close
+    description: LTP
+    mode: NULLABLE
+    type: FLOAT
