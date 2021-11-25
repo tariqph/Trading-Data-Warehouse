@@ -11,7 +11,7 @@ from kiteconnect import KiteTicker
 from publish_pubsub_2 import insert_db
 logging.basicConfig(level=logging.DEBUG)
 import pandas as pd
-
+import glob
 # global variables
 
 last_traded_strike = 0
@@ -29,15 +29,34 @@ open(filename_data, 'w').close()
 open(filename_timestamp, 'w').close()
 
 # Get the List of Instrument tokens
+output_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","Data\Output"))
+path = os.path.abspath(os.path.join(output_path,"Final"))  # use your path
+all_files = glob.glob(path + "/*.csv")
+
+mod_files = []
+for file in all_files:
+    # if 'stock' in file:
+    mod_files.append(file)
+       
+li = []
+for filename in mod_files:
+    df = pd.read_csv(filename, index_col=None, header=0)
+    li.append(df)
+
+data = pd.concat(li, axis=0, ignore_index=True)
+instrument_list = data['instrument_token'].to_list()
+n = len(instrument_list)
+instrument_list = instrument_list[int(n/3):int(2*n/3)]
 
 # data = pd.read_csv('Data/Final/final_token_stock_three_month.csv')
-data = pd.read_csv('G:\DS - Competitions and projects\Zerodha\Data/Output/Final/final_token_stock_three_month.csv')
+# data = pd.read_csv('G:\DS - Competitions and projects\Zerodha\Data/Output/Final/final_token_stock_three_month.csv')
 
-instrument_list = data['instrument_token'].to_list()
+# instrument_list = data['instrument_token'].to_list()
 
 # Table name of the db to be inserted
 table_name = 'stockdata2_test'
 # instrument_list = instrument_list[0:20]
+print("stock2")
 print(len(instrument_list))
 
 # instrument_list = [256265,18258178]

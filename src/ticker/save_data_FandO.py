@@ -35,8 +35,8 @@ all_files = glob.glob(path + "/*.csv")
 
 mod_files = []
 for file in all_files:
-    if 'curr' in file or 'index' in file:
-       mod_files.append(file)
+    # if 'curr' in file or 'index' in file:
+    mod_files.append(file)
        
 li = []
 
@@ -46,10 +46,13 @@ for filename in mod_files:
 
 data = pd.concat(li, axis=0, ignore_index=True)
 instrument_list = data['instrument_token'].to_list()
+n = len(instrument_list)
+instrument_list = instrument_list[int(2*n/3):]
 
 # Table name of the db to be inserted
 table_name = 'fando_test'
 # instrument_list = instrument_list[0:100]
+print('fando')
 print(len(instrument_list))
 
 

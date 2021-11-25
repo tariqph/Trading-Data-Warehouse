@@ -12,6 +12,7 @@ from kiteconnect import KiteTicker
 from publish_pubsub_1 import insert_db
 logging.basicConfig(level=logging.DEBUG)
 import pandas as pd
+import glob
 
 # global variables
 
@@ -32,15 +33,36 @@ open(filename_data, 'w').close()
 open(filename_timestamp, 'w').close()
 
 # Get the List of Instrument tokens
+output_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","Data\Output"))
+path = os.path.abspath(os.path.join(output_path,"Final"))  # use your path
+all_files = glob.glob(path + "/*.csv")
+
+mod_files = []
+for file in all_files:
+    # if 'stock' in file:
+    mod_files.append(file)
+       
+li = []
+for filename in mod_files:
+    df = pd.read_csv(filename, index_col=None, header=0)
+    li.append(df)
+
+data = pd.concat(li, axis=0, ignore_index=True)
+instrument_list = data['instrument_token'].to_list()
+n = len(instrument_list)
+instrument_list = instrument_list[0:int(n/3)]
+
+# Get the List of Instrument tokens
 # data = pd.read_csv('Data/Final/final_token_stock_three_month.csv')
 
-data = pd.read_csv('G:\DS - Competitions and projects\Zerodha\Data/Output/Final/final_token_stock_one_month.csv')
-# data = pd.read_csv('Data/Final/final_token_stock_one_month.csv')
-instrument_list = data['instrument_token'].to_list()
+# data = pd.read_csv('G:\DS - Competitions and projects\Zerodha\Data/Output/Final/final_token_stock_one_month.csv')
+# # data = pd.read_csv('Data/Final/final_token_stock_one_month.csv')
+# instrument_list = data['instrument_token'].to_list()
 
 # Table name of the db to be inserted
 table_name = 'stockdata1_test'
 # instrument_list = instrument_list[0:10]
+print("stock1")
 print(len(instrument_list))
 
 # instrument_list = [256265,18258178]
@@ -68,10 +90,13 @@ if parser.has_section(section):
 	for param in params:
 		db[param[0]] = param[1]
 
+print(db)
 kws = KiteTicker(db['api_key'], db['access_token'])
 
 def on_ticks(ws, ticks):
     # Callback to receive ticks.
+    
+    # Need to handle exceptions here
 
     if(ticks[0]['timestamp'].minute == 0):
     	print('stock1:' ,(ticks[0]['timestamp']), len(ticks))
@@ -85,11 +110,10 @@ def on_ticks(ws, ticks):
     
 def on_connect(ws, response):
     # Callback on successful connect.
-    # Subscribe to a list of instrument_tokens (RELIANCE and ACC here).
+    # Subscribe to a list of instrument_tokens 
     ws.subscribe(instrument_list)
 
-
-    # Set RELIANCE to tick in `full` mode.
+    # Set to tick in `full` mode.
     ws.set_mode(ws.MODE_FULL,instrument_list)
 
 def on_close(ws, code, reason):

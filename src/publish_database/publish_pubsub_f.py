@@ -88,6 +88,14 @@ def insert_db(ticks,
     # Check if the insert requirements are met before proceeding
     if(prev == {}):
         print('returning')
+        
+        next_tmp = next.copy()
+        for token, tick in next.items():
+            if 'volume' in tick.keys():
+                if(tick['volume'] == 0):
+                    next_tmp.pop(token)
+        next = next_tmp.copy()
+        
         with open(filename_data, 'w') as outfile:
             try:
                 json.dump(next, outfile)
@@ -112,7 +120,7 @@ def insert_db(ticks,
             
     next = union(prev,next,next_timestamp)
     next_flat = flatten(next)
-    print(len(next_flat))
+    print("fando",len(next_flat))
     # print(next)
 
     print(prev_timestamp, next_timestamp)

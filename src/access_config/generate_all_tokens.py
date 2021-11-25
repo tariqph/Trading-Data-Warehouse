@@ -353,3 +353,4 @@ password = params['password']
 
 engine = create_engine(f'postgresql://{user}:{password}@localhost:5432/test_final')
 frame.to_sql('instruments_list_today', engine, if_exists= 'replace')
+frame.to_csv(path + '_all_instruments_today.csv')

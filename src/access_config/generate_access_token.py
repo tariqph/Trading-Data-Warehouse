@@ -84,7 +84,7 @@ data = kite.generate_session(request_token, api_secret=api_secret)
 print(data['access_token'])
 parser.set('zerodha','access_token', data['access_token'])
 
-with open('database.ini', 'w') as configfile:
+with open(filename, 'w') as configfile:
     parser.write(configfile)
     
 
