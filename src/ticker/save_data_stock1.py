@@ -67,8 +67,8 @@ print(len(instrument_list))
 
 # instrument_list = [256265,18258178]
 
-prev_dict = {}
-next_dict = {}
+prev = []
+next = []
 prev_timestamp = '0'
 # Initialise
 
@@ -92,20 +92,25 @@ if parser.has_section(section):
 
 print(db)
 kws = KiteTicker(db['api_key'], db['access_token'])
-
+count = 0
 def on_ticks(ws, ticks):
     # Callback to receive ticks.
-    
+    # global prev, count
+    # if(count == 0):
+    #     prev = ticks
+    #     count +=1
+    #     return
     # Need to handle exceptions here
-
-    if(ticks[0]['timestamp'].minute == 0):
+    # print(prev[0]['timestamp'], ticks[0]['timestamp'])
+    
+    if(ticks[0]['timestamp'].second == 0):
     	print('stock1:' ,(ticks[0]['timestamp']), len(ticks))
     
         
     insert_db.apply_async(args = (ticks,
                     # prev_timestamp,ticks[0]['timestamp'], prev_dict, next_dict, 
                     table_name, filename_data, filename_timestamp), queue='stock1')
-    
+    prev = ticks
     
     
 def on_connect(ws, response):
