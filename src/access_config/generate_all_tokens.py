@@ -5,13 +5,24 @@ import math
 import datetime
 from forex_python.converter import CurrencyRates
 import glob
-from config import config
-from sqlalchemy import create_engine
+# from sqlalchemy import create_engine
 import os
+from bigquery_insert import bq_insert
+import yaml
+import logging
+
+config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","config.yml"))
+try: 
+    with open (config_path, 'r') as file:
+    	config = yaml.safe_load(file)
+except Exception as e:
+    print('Error reading the config file')
 
 # Input and Output folders
-input_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","Data\Input"))
-output_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","Data\Output"))
+input_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                          config['input_files']['root_location']))
+output_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                           config['output_files']['root_location']))
 
 
 def generate_tokens(total_instruments,instruments,filename,exchange):
@@ -40,8 +51,11 @@ def expiry_days_symbol(months, weeks):
     for date in weeks:
         if(date.date() < today):
             continue
+        # week_symbol.append(str(date.strftime('%y')).upper() +
+        #                 str(date.strftime('%b')).upper()[0] +
+        #                 str(date.strftime('%d')).upper() )
         week_symbol.append(str(date.strftime('%y')).upper() +
-                        str(date.strftime('%b')).upper()[0] +
+                        str(date.month) +
                         str(date.strftime('%d')).upper() )
      # Hard coded Data   
     return month_symbol[0:3], week_symbol[0:3]
@@ -107,27 +121,36 @@ def generate_list(instruments,key, filename, symbol, option_type):
     final = pd.DataFrame(final, columns = ['tradingsymbol'])
     final.to_csv(filename)
 
-    
-kite = access_token()
+filename = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['access_files']['api_one']))
+
+kite = access_token(filename = filename)
 
 
 # Input Files location
 
 # stock_list_input = "Input_Data/stock_list.csv"
-stock_list_input = os.path.abspath(os.path.join(input_path,"stock_list.csv")) 
+stock_list_input = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['input_files']['stock_list']))
 
-# indices_list_input = "Input_Data/index_currency_list.csv"
-indices_list_input = os.path.abspath(os.path.join(input_path,"index_currency_list.csv")) 
+indices_list_input = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['input_files']['index_currency_list']))
+total_instruments_input = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['input_files']['all_instruments']))
 
-# total_instruments_input = "Input_Data/Data_Complete.csv"
-total_instruments_input = os.path.abspath(os.path.join(input_path,"Data_Complete.csv")) 
+index_expiry_input = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['input_files']['expiry_index'])) 
 
-# index_expiry_input  = 'Input_Data/expiry_index.csv'
-index_expiry_input = os.path.abspath(os.path.join(input_path,"expiry_index.csv")) 
+curr_expiry_input = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['input_files']['expiry_currency']))
 
-# curr_expiry_input = 'Input_Data/expiry_curr.csv'
-curr_expiry_input = os.path.abspath(os.path.join(input_path,"expiry_curr.csv")) 
+# indices_list_input = os.path.abspath(os.path.join(input_path,"index_currency_list.csv")) 
 
+# total_instruments_input = os.path.abspath(os.path.join(input_path,"Data_Complete.csv")) 
+
+# index_expiry_input = os.path.abspath(os.path.join(input_path,"expiry_index.csv")) 
+
+# curr_expiry_input = os.path.abspath(os.path.join(input_path,"expiry_curr.csv")) 
 
 # Get the current list of instruments from zerodha
 data = kite.instruments()
@@ -227,25 +250,45 @@ curr_months = curr_months['Dates'].tolist()
 # Getting expiry symbols
 month_symbol_curr, week_symbol_curr = expiry_days_symbol(curr_months,curr_weeks)
 
+# Logging the expiries 
+date = datetime.date.today()
+log_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",f"logs/run_{date}.log"))
+logging.basicConfig(filename=log_file, level=logging.INFO)
+logging.info('Monthly expiries of currency: %s',month_symbol_curr)
+logging.info('Weekly expiries of currency: %s',week_symbol_curr)
+logging.info('Monthly expiries of index: %s',month_symbol_index)
+logging.info('Weekly expiries of index: %s',week_symbol_index)
 # Output location of trading symbol list
 
-# three_mon_output = 'Data/final_list_three.csv'
-three_mon_output = os.path.abspath(os.path.join(output_path,"final_list_three.csv")) 
+# three_mon_output = os.path.abspath(os.path.join(output_path,"final_list_three.csv")) 
 
-# one_mon_output = 'Data/final_list_one.csv'
-one_mon_output = os.path.abspath(os.path.join(output_path,"final_list_one.csv")) 
+# one_mon_output = os.path.abspath(os.path.join(output_path,"final_list_one.csv")) 
 
-# weekly_index_output = 'Data/weekly_index.csv'
-weekly_index_output = os.path.abspath(os.path.join(output_path,"weekly_index.csv")) 
+# weekly_index_output = os.path.abspath(os.path.join(output_path,"weekly_index.csv")) 
 
-# monthly_index_output = 'Data/monthly_index.csv'
-monthly_index_output = os.path.abspath(os.path.join(output_path,"monthly_index.csv")) 
+# monthly_index_output = os.path.abspath(os.path.join(output_path,"monthly_index.csv")) 
 
-# weekly_curr_output = 'Data/weekly_curr.csv'
-weekly_curr_output = os.path.abspath(os.path.join(output_path,"weekly_curr.csv")) 
+# weekly_curr_output = os.path.abspath(os.path.join(output_path,"weekly_curr.csv")) 
 
-# monthly_curr_output = 'Data/monthly_curr.csv'
-monthly_curr_output = os.path.abspath(os.path.join(output_path,"monthly_curr.csv")) 
+# monthly_curr_output = os.path.abspath(os.path.join(output_path,"monthly_curr.csv")) 
+
+three_mon_output = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['symbols']['stock_list_two']))
+
+one_mon_output = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['symbols']['stock_list_one'])) 
+
+weekly_index_output = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['symbols']['weekly_index']))
+
+monthly_index_output = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['symbols']['monthly_index']))
+
+weekly_curr_output = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['symbols']['weekly_currency']))
+
+monthly_curr_output = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['symbols']['monthly_currency'])) 
 
 
 generate_list(three_month_instruments,'stock',three_mon_output,month_symbol_index[0:2],option_type)
@@ -266,35 +309,55 @@ stock_one_month = pd.read_csv(one_mon_output)
 
 # Output location of the final token list for total_instrument
 
-# final_token_index_weekly = 'Data/Final/final_token_index_weekly.csv'
-final_token_index_weekly = os.path.abspath(os.path.join(output_path,"Final/final_token_index_weekly.csv")) 
+final_token_index_weekly = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['index_weekly_tokens']))
 
-# final_token_index_monthly = 'Data/Final/final_token_index_monthly.csv'
-final_token_index_monthly = os.path.abspath(os.path.join(output_path,"Final/final_token_index_monthly.csv")) 
+final_token_index_monthly = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['index_monthly_tokens']))
 
-# final_token_stock_three_month = 'Data/Final/final_token_stock_three_month.csv'
-final_token_stock_three_month = os.path.abspath(os.path.join(output_path,"Final/final_token_stock_three_month.csv")) 
+final_token_stock_three_month = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['stocks_three_months_tokens']))
 
-# final_token_stock_one_month = 'Data/Final/final_token_stock_one_month.csv'
-final_token_stock_one_month = os.path.abspath(os.path.join(output_path,"Final/final_token_stock_one_month.csv")) 
+final_token_stock_one_month = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['stocks_one_month_tokens']))
 
-# final_token_curr_weekly = 'Data/Final/final_token_curr_weekly.csv'
-final_token_curr_weekly = os.path.abspath(os.path.join(output_path,"Final/final_token_curr_weekly.csv")) 
+final_token_curr_weekly = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['currency_weekly_tokens']))
 
-# final_token_curr_monthly = 'Data/Final/final_token_curr_monthly.csv'
-final_token_curr_monthly = os.path.abspath(os.path.join(output_path,"Final/final_token_curr_monthly.csv")) 
+final_token_curr_monthly = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['currency_monthly_tokens']))
 
-# final_curr_futures_token = 'Data/Final/final_curr_futures_token.csv'
-final_curr_futures_token = os.path.abspath(os.path.join(output_path,"Final/final_curr_futures_token.csv")) 
+final_curr_futures_token = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['currency_futures_tokens']))
 
-# final_index_futures_token = 'Data/Final/final_index_futures_token.csv'
-final_index_futures_token = os.path.abspath(os.path.join(output_path,"Final/final_index_futures_token.csv")) 
+final_index_futures_token = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['index_futures_tokens']))
 
-# final_token_indices_list_NSE = 'Data/Final/final_token_indices_list_NSE.csv'
-final_token_indices_list_NSE = os.path.abspath(os.path.join(output_path,"Final/final_token_indices_list_NSE.csv")) 
+final_token_indices_list_NSE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['NSE_indices_tokens']))
 
-# final_token_indices_list_BSE = 'Data/Final/final_token_indices_list_BSE.csv'
-final_token_indices_list_BSE = os.path.abspath(os.path.join(output_path,"Final/final_token_indices_list_BSE.csv")) 
+final_token_indices_list_BSE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['BSE_indices_tokens']))
+
+# final_token_index_weekly = os.path.abspath(os.path.join(output_path,"Final/final_token_index_weekly.csv")) 
+
+# final_token_index_monthly = os.path.abspath(os.path.join(output_path,"Final/final_token_index_monthly.csv")) 
+
+# final_token_stock_three_month = os.path.abspath(os.path.join(output_path,"Final/final_token_stock_three_month.csv")) 
+
+# final_token_stock_one_month = os.path.abspath(os.path.join(output_path,"Final/final_token_stock_one_month.csv")) 
+
+# final_token_curr_weekly = os.path.abspath(os.path.join(output_path,"Final/final_token_curr_weekly.csv")) 
+
+# final_token_curr_monthly = os.path.abspath(os.path.join(output_path,"Final/final_token_curr_monthly.csv")) 
+
+# final_curr_futures_token = os.path.abspath(os.path.join(output_path,"Final/final_curr_futures_token.csv")) 
+
+# final_index_futures_token = os.path.abspath(os.path.join(output_path,"Final/final_index_futures_token.csv")) 
+
+# final_token_indices_list_NSE = os.path.abspath(os.path.join(output_path,"Final/final_token_indices_list_NSE.csv")) 
+
+# final_token_indices_list_BSE = os.path.abspath(os.path.join(output_path,"Final/final_token_indices_list_BSE.csv")) 
 
 
 
@@ -323,19 +386,30 @@ index_futures = index_futures[['instrument_token','name','tradingsymbol','strike
 index_futures.to_csv(final_index_futures_token)
 
 # Generating the tokens for Indices
-indices_path = os.path.abspath(os.path.join(input_path,"Indexes.csv")) 
+indices_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['input_files']['indexes'])) 
+# indices_path = os.path.abspath(os.path.join(input_path,"Indexes.csv")) 
+
+
+final_token_stock_underlying = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['tokens']['final_underlying_tokens'])) 
+
+# final_token_stock_underlying = os.path.abspath(os.path.join(output_path,"Final/final_token_stock_underlying.csv")) 
+
 
 indices_list = pd.read_csv(indices_path)
+stock_list = indices_list[indices_list['TYPE'] == 'STOCK']
+indices_list = indices_list[indices_list['TYPE'] == 'INDICES']
 generate_tokens(total_instruments, indices_list,final_token_indices_list_NSE,'NSE')
 generate_tokens(total_instruments, indices_list,final_token_indices_list_BSE,'BSE')
-
+generate_tokens(total_instruments, stock_list,final_token_stock_underlying,'NSE')
 
 
 # Insert the final instrument list with tokens generated into a database table
 
 # path = r'Data/Final' # use your path
 path = os.path.abspath(os.path.join(output_path,"Final")) 
-
+# print(path)
 all_files = glob.glob(path + "/*.csv")
 
 li = []
@@ -345,12 +419,23 @@ for filename in all_files:
     li.append(df)
 
 frame = pd.concat(li, axis=0, ignore_index=True)
+print(frame.shape)
+all_instruments =  os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['merged_tokens']['all_instruments'])) 
+frame.to_csv(all_instruments)
 
-params = config()
+frame_curr = frame[(frame['name'] == 'USDINR') | (frame['name'] == 'EURINR') | (frame['name'] == 'GBPINR') | (frame['name'] == 'JPYINR')]
 
-user = params['user']
-password = params['password']     
+frame = frame.drop(frame_curr.index)
 
-engine = create_engine(f'postgresql://{user}:{password}@localhost:5432/test_final')
-frame.to_sql('instruments_list_today', engine, if_exists= 'replace')
-frame.to_csv(path + '_all_instruments_today.csv')
+all_currencies =  os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['merged_tokens']['all_currencies'])) 
+all_instruments_ex_currencies =  os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
+                                                config['output_files']['merged_tokens']['all_instruments_ex_currencies'])) 
+
+
+frame.to_csv(all_instruments_ex_currencies)
+frame_curr.to_csv(all_currencies)
+
+# Insert instruments list into bigquery table
+bq_insert()

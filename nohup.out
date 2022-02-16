@@ -1,0 +1,583 @@
+2021-12-15
+2021-12-15
+2021-12-15
+Deleting queues from rabbitmq
+Collecting Data
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_7 --concurrency=1  --loglevel=info -P  eventlet -n worker1@%h
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_2 --concurrency=1  --loglevel=info -P  eventlet -n worker2@%h
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_3 --concurrency=1  --loglevel=info -P  eventlet -n worker3@%h
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_4 --concurrency=1  --loglevel=info -P  eventlet -n worker4@%h
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_5 --concurrency=1  --loglevel=info -P  eventlet -n worker5@%h
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_6 --concurrency=1  --loglevel=info -P  eventlet -n worker6@%h
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn1.py
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn2.py
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn3.py
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn4.py
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn5.py
+Starting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn6.py
+ 
+ -------------- worker5@zerodha-instance v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.4.0-1058-gcp-x86_64-with-Ubuntu-18.04-bionic 2021-12-15 09:05:24
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f7d9a55cfd0
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 1 (eventlet)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> conn_5           exchange=conn_5(direct) key=conn_5
+                
+
+[tasks]
+  . publish_pubsub_1.insert_db
+
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+[2021-12-15 09:05:24,134: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2021-12-15 09:05:24,179: INFO/MainProcess] mingle: searching for neighbors
+ 
+ -------------- worker3@zerodha-instance v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.4.0-1058-gcp-x86_64-with-Ubuntu-18.04-bionic 2021-12-15 09:05:24
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7ffb1ae64fd0
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 1 (eventlet)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> conn_3           exchange=conn_3(direct) key=conn_3
+                
+
+[tasks]
+  . publish_pubsub_1.insert_db
+
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+[2021-12-15 09:05:24,340: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2021-12-15 09:05:24,397: INFO/MainProcess] mingle: searching for neighbors
+ 
+ -------------- worker4@zerodha-instance v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.4.0-1058-gcp-x86_64-with-Ubuntu-18.04-bionic 2021-12-15 09:05:24
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7fd416b5bfd0
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 1 (eventlet)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> conn_4           exchange=conn_4(direct) key=conn_4
+                
+
+[tasks]
+  . publish_pubsub_1.insert_db
+
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+[2021-12-15 09:05:24,460: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+ 
+ -------------- worker2@zerodha-instance v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.4.0-1058-gcp-x86_64-with-Ubuntu-18.04-bionic 2021-12-15 09:05:24
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f99c10e9f60
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 1 (eventlet)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> conn_2           exchange=conn_2(direct) key=conn_2
+                
+
+[tasks]
+  . publish_pubsub_1.insert_db
+
+[2021-12-15 09:05:24,510: INFO/MainProcess] mingle: searching for neighbors
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+[2021-12-15 09:05:24,514: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+ 
+ -------------- worker1@zerodha-instance v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.4.0-1058-gcp-x86_64-with-Ubuntu-18.04-bionic 2021-12-15 09:05:24
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f38402e7fd0
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 1 (eventlet)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> conn_7           exchange=conn_7(direct) key=conn_7
+                
+
+[tasks]
+  . publish_pubsub_1.insert_db
+
+[2021-12-15 09:05:24,561: INFO/MainProcess] mingle: searching for neighbors
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+[2021-12-15 09:05:24,593: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+ 
+ -------------- worker6@zerodha-instance v5.1.2 (sun-harmonics)
+--- ***** ----- 
+-- ******* ---- Linux-5.4.0-1058-gcp-x86_64-with-Ubuntu-18.04-bionic 2021-12-15 09:05:24
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7fdae2128f60
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     rpc://
+- *** --- * --- .> concurrency: 1 (eventlet)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> conn_6           exchange=conn_6(direct) key=conn_6
+                
+
+[tasks]
+  . publish_pubsub_1.insert_db
+
+[2021-12-15 09:05:24,628: INFO/MainProcess] mingle: searching for neighbors
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+[2021-12-15 09:05:24,636: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2021-12-15 09:05:24,668: INFO/MainProcess] mingle: searching for neighbors
+[2021-12-15 09:05:25,248: INFO/MainProcess] mingle: all alone
+[2021-12-15 09:05:25,339: INFO/MainProcess] worker5@zerodha-instance ready.
+[2021-12-15 09:05:25,347: INFO/MainProcess] pidbox: Connected to amqp://guest:**@127.0.0.1:5672//.
+[2021-12-15 09:05:25,479: INFO/MainProcess] mingle: all alone
+[2021-12-15 09:05:25,506: INFO/MainProcess] worker3@zerodha-instance ready.
+[2021-12-15 09:05:25,522: INFO/MainProcess] pidbox: Connected to amqp://guest:**@127.0.0.1:5672//.
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+DEBUG:amqp:Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@zerodha-instance.asia-south1-c.c.zerodha-332309.internal', 'copyright': 'Copyright (c) 2007-2021 VMware, Inc. or its affiliates.', 'information': 'Licensed under the MPL 2.0. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 24.1.7', 'product': 'RabbitMQ', 'version': '3.9.11'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+DEBUG:amqp:using channel_id: 1
+DEBUG:amqp:Channel open
+[2021-12-15 09:05:25,570: INFO/MainProcess] mingle: all alone
+[2021-12-15 09:05:25,604: INFO/MainProcess] worker4@zerodha-instance ready.
+[2021-12-15 09:05:25,607: INFO/MainProcess] pidbox: Connected to amqp://guest:**@127.0.0.1:5672//.
+[2021-12-15 09:05:25,637: INFO/MainProcess] mingle: all alone
+[2021-12-15 09:05:25,674: INFO/MainProcess] pidbox: Connected to amqp://guest:**@127.0.0.1:5672//.
+[2021-12-15 09:05:25,677: INFO/MainProcess] mingle: all alone
+[2021-12-15 09:05:25,682: INFO/MainProcess] worker2@zerodha-instance ready.
+[2021-12-15 09:05:25,720: INFO/MainProcess] worker1@zerodha-instance ready.
+[2021-12-15 09:05:25,721: INFO/MainProcess] mingle: all alone
+[2021-12-15 09:05:25,724: INFO/MainProcess] pidbox: Connected to amqp://guest:**@127.0.0.1:5672//.
+[2021-12-15 09:05:25,746: INFO/MainProcess] worker6@zerodha-instance ready.
+[2021-12-15 09:05:25,770: INFO/MainProcess] Task publish_pubsub_1.insert_db[f67e4225-937c-4a86-abe5-4f84e8a93e90] received
+[2021-12-15 09:05:25,793: WARNING/MainProcess] returning
+[2021-12-15 09:05:25,793: WARNING/MainProcess] 
+
+[2021-12-15 09:05:25,980: INFO/MainProcess] Task publish_pubsub_1.insert_db[f67e4225-937c-4a86-abe5-4f84e8a93e90] succeeded in 0.18793921600001795s: None
+[2021-12-15 09:05:25,982: INFO/MainProcess] Task publish_pubsub_1.insert_db[4fb3189e-7123-405b-9556-806f98625fec] received
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+DEBUG:amqp:Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@zerodha-instance.asia-south1-c.c.zerodha-332309.internal', 'copyright': 'Copyright (c) 2007-2021 VMware, Inc. or its affiliates.', 'information': 'Licensed under the MPL 2.0. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 24.1.7', 'product': 'RabbitMQ', 'version': '3.9.11'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+DEBUG:amqp:using channel_id: 1
+DEBUG:amqp:Channel open
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+ERROR:kiteconnect.ticker:Connection error: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+ERROR:kiteconnect.ticker:Connection closed: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Warm shutdown (MainProcess)
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Warm shutdown (MainProcess)
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+DEBUG:amqp:Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@zerodha-instance.asia-south1-c.c.zerodha-332309.internal', 'copyright': 'Copyright (c) 2007-2021 VMware, Inc. or its affiliates.', 'information': 'Licensed under the MPL 2.0. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 24.1.7', 'product': 'RabbitMQ', 'version': '3.9.11'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+DEBUG:amqp:using channel_id: 1
+DEBUG:amqp:Channel open
+Unhandled Error
+Traceback (most recent call last):
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 478, in addCallbacks
+    self._runCallbacks()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 859, in _runCallbacks
+    current.result, *args, **kwargs
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 513, in _continueFiring
+    callable(*args, **kwargs)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 766, in disconnectAll
+    reader, reader.connectionLost, Failure(main.CONNECTION_LOST)
+--- <exception caught here> ---
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 101, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 85, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 118, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 83, in callWithContext
+    return func(*args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 507, in connectionLost
+    self._commonConnection.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 325, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/tls.py", line 394, in connectionLost
+    ProtocolWrapper.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/policies.py", line 113, in connectionLost
+    self.wrappedProtocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 288, in connectionLost
+    self._connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 3422, in _connectionLost
+    WebSocketProtocol._connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 1133, in _connectionLost
+    self._onClose(self.wasClean, WebSocketProtocol.CLOSE_STATUS_CODE_ABNORMAL_CLOSE, "connection was closed uncleanly (%s)" % self.wasNotCleanReason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 331, in _onClose
+    self.onClose(wasClean, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 81, in onClose
+    self.factory.on_close(self, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 657, in _on_close
+    self.on_close(self, code, reason)
+  File "save_data_conn6.py", line 93, in on_close
+    ws.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 558, in stop
+    reactor.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 711, in stop
+    raise error.ReactorNotRunning("Can't stop reactor that isn't running.")
+twisted.internet.error.ReactorNotRunning: Can't stop reactor that isn't running.
+
+conn6
+979
+conn_6 1970-01-01 05:30:00 979
+conn_6 2021-12-15 09:05:25 1
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+DEBUG:amqp:Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@zerodha-instance.asia-south1-c.c.zerodha-332309.internal', 'copyright': 'Copyright (c) 2007-2021 VMware, Inc. or its affiliates.', 'information': 'Licensed under the MPL 2.0. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 24.1.7', 'product': 'RabbitMQ', 'version': '3.9.11'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+DEBUG:amqp:using channel_id: 1
+DEBUG:amqp:Channel open
+ERROR:kiteconnect.ticker:Connection error: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+ERROR:kiteconnect.ticker:Connection closed: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+Unhandled Error
+Traceback (most recent call last):
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 478, in addCallbacks
+    self._runCallbacks()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 859, in _runCallbacks
+    current.result, *args, **kwargs
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 513, in _continueFiring
+    callable(*args, **kwargs)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 766, in disconnectAll
+    reader, reader.connectionLost, Failure(main.CONNECTION_LOST)
+--- <exception caught here> ---
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 101, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 85, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 118, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 83, in callWithContext
+    return func(*args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 507, in connectionLost
+    self._commonConnection.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 325, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/tls.py", line 394, in connectionLost
+    ProtocolWrapper.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/policies.py", line 113, in connectionLost
+    self.wrappedProtocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 288, in connectionLost
+    self._connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 3422, in _connectionLost
+    WebSocketProtocol._connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 1133, in _connectionLost
+    self._onClose(self.wasClean, WebSocketProtocol.CLOSE_STATUS_CODE_ABNORMAL_CLOSE, "connection was closed uncleanly (%s)" % self.wasNotCleanReason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 331, in _onClose
+    self.onClose(wasClean, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 81, in onClose
+    self.factory.on_close(self, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 657, in _on_close
+    self.on_close(self, code, reason)
+  File "save_data_conn1.py", line 91, in on_close
+    ws.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 558, in stop
+    reactor.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 711, in stop
+    raise error.ReactorNotRunning("Can't stop reactor that isn't running.")
+twisted.internet.error.ReactorNotRunning: Can't stop reactor that isn't running.
+
+
+worker: Hitting Ctrl+C again will terminate all running tasks!
+
+worker: Warm shutdown (MainProcess)
+conn1
+441
+conn_1 2021-12-15 09:00:02 441
+[2021-12-15 09:05:26,121: INFO/MainProcess] pidbox: Connected to amqp://guest:**@127.0.0.1:5672//.
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+DEBUG:amqp:Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@zerodha-instance.asia-south1-c.c.zerodha-332309.internal', 'copyright': 'Copyright (c) 2007-2021 VMware, Inc. or its affiliates.', 'information': 'Licensed under the MPL 2.0. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 24.1.7', 'product': 'RabbitMQ', 'version': '3.9.11'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+DEBUG:amqp:using channel_id: 1
+ERROR:kiteconnect.ticker:Connection error: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+ERROR:kiteconnect.ticker:Connection closed: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+DEBUG:amqp:Channel open
+/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+DEBUG:amqp:Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@zerodha-instance.asia-south1-c.c.zerodha-332309.internal', 'copyright': 'Copyright (c) 2007-2021 VMware, Inc. or its affiliates.', 'information': 'Licensed under the MPL 2.0. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 24.1.7', 'product': 'RabbitMQ', 'version': '3.9.11'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+Unhandled Error
+Traceback (most recent call last):
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 478, in addCallbacks
+    self._runCallbacks()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 859, in _runCallbacks
+    current.result, *args, **kwargs
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 513, in _continueFiring
+    callable(*args, **kwargs)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 766, in disconnectAll
+    reader, reader.connectionLost, Failure(main.CONNECTION_LOST)
+--- <exception caught here> ---
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 101, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 85, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 118, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 83, in callWithContext
+    return func(*args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 507, in connectionLost
+    self._commonConnection.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 325, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/tls.py", line 394, in connectionLost
+    ProtocolWrapper.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/policies.py", line 113, in connectionLost
+    self.wrappedProtocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 288, in connectionLost
+    self._connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 3422, in _connectionLost
+    WebSocketProtocol._connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 1133, in _connectionLost
+    self._onClose(self.wasClean, WebSocketProtocol.CLOSE_STATUS_CODE_ABNORMAL_CLOSE, "connection was closed uncleanly (%s)" % self.wasNotCleanReason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 331, in _onClose
+    self.onClose(wasClean, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 81, in onClose
+    self.factory.on_close(self, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 657, in _on_close
+    self.on_close(self, code, reason)
+  File "save_data_conn4.py", line 93, in on_close
+    ws.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 558, in stop
+    reactor.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 711, in stop
+    raise error.ReactorNotRunning("Can't stop reactor that isn't running.")
+twisted.internet.error.ReactorNotRunning: Can't stop reactor that isn't running.
+
+DEBUG:amqp:using channel_id: 1
+conn4
+979
+conn_4 1970-01-01 05:30:00 979
+DEBUG:amqp:Channel open
+ERROR:kiteconnect.ticker:Connection error: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+ERROR:kiteconnect.ticker:Connection closed: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+Unhandled Error
+Traceback (most recent call last):
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 478, in addCallbacks
+    self._runCallbacks()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 859, in _runCallbacks
+    current.result, *args, **kwargs
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 513, in _continueFiring
+    callable(*args, **kwargs)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 766, in disconnectAll
+    reader, reader.connectionLost, Failure(main.CONNECTION_LOST)
+--- <exception caught here> ---
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 101, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 85, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 118, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 83, in callWithContext
+    return func(*args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 507, in connectionLost
+    self._commonConnection.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 325, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/tls.py", line 394, in connectionLost
+    ProtocolWrapper.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/policies.py", line 113, in connectionLost
+    self.wrappedProtocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 288, in connectionLost
+    self._connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 3422, in _connectionLost
+    WebSocketProtocol._connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 1133, in _connectionLost
+    self._onClose(self.wasClean, WebSocketProtocol.CLOSE_STATUS_CODE_ABNORMAL_CLOSE, "connection was closed uncleanly (%s)" % self.wasNotCleanReason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 331, in _onClose
+    self.onClose(wasClean, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 81, in onClose
+    self.factory.on_close(self, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 657, in _on_close
+    self.on_close(self, code, reason)
+  File "save_data_conn2.py", line 93, in on_close
+    ws.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 558, in stop
+    reactor.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 711, in stop
+    raise error.ReactorNotRunning("Can't stop reactor that isn't running.")
+twisted.internet.error.ReactorNotRunning: Can't stop reactor that isn't running.
+
+conn2
+979
+conn_2 1970-01-01 05:30:00 979
+ERROR:kiteconnect.ticker:Connection error: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+ERROR:kiteconnect.ticker:Connection closed: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+ERROR:kiteconnect.ticker:Connection error: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+ERROR:kiteconnect.ticker:Connection closed: 1006 - connection was closed uncleanly (peer dropped the TCP connection without previous WebSocket closing handshake)
+Unhandled Error
+Traceback (most recent call last):
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 478, in addCallbacks
+    self._runCallbacks()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 859, in _runCallbacks
+    current.result, *args, **kwargs
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 513, in _continueFiring
+    callable(*args, **kwargs)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 766, in disconnectAll
+    reader, reader.connectionLost, Failure(main.CONNECTION_LOST)
+--- <exception caught here> ---
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 101, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 85, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 118, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 83, in callWithContext
+    return func(*args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 507, in connectionLost
+    self._commonConnection.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 325, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/tls.py", line 394, in connectionLost
+    ProtocolWrapper.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/policies.py", line 113, in connectionLost
+    self.wrappedProtocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 288, in connectionLost
+    self._connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 3422, in _connectionLost
+    WebSocketProtocol._connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 1133, in _connectionLost
+    self._onClose(self.wasClean, WebSocketProtocol.CLOSE_STATUS_CODE_ABNORMAL_CLOSE, "connection was closed uncleanly (%s)" % self.wasNotCleanReason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 331, in _onClose
+    self.onClose(wasClean, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 81, in onClose
+    self.factory.on_close(self, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 657, in _on_close
+    self.on_close(self, code, reason)
+  File "save_data_conn5.py", line 93, in on_close
+    ws.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 558, in stop
+    reactor.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 711, in stop
+    raise error.ReactorNotRunning("Can't stop reactor that isn't running.")
+twisted.internet.error.ReactorNotRunning: Can't stop reactor that isn't running.
+
+Unhandled Error
+Traceback (most recent call last):
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 478, in addCallbacks
+    self._runCallbacks()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/defer.py", line 859, in _runCallbacks
+    current.result, *args, **kwargs
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 513, in _continueFiring
+    callable(*args, **kwargs)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 766, in disconnectAll
+    reader, reader.connectionLost, Failure(main.CONNECTION_LOST)
+--- <exception caught here> ---
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 101, in callWithLogger
+    return callWithContext({"system": lp}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/log.py", line 85, in callWithContext
+    return context.call({ILogContext: newCtx}, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 118, in callWithContext
+    return self.currentContext().callWithContext(ctx, func, *args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/python/context.py", line 83, in callWithContext
+    return func(*args, **kw)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 507, in connectionLost
+    self._commonConnection.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/tcp.py", line 325, in connectionLost
+    protocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/tls.py", line 394, in connectionLost
+    ProtocolWrapper.connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/protocols/policies.py", line 113, in connectionLost
+    self.wrappedProtocol.connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 288, in connectionLost
+    self._connectionLost(reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 3422, in _connectionLost
+    WebSocketProtocol._connectionLost(self, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/websocket/protocol.py", line 1133, in _connectionLost
+    self._onClose(self.wasClean, WebSocketProtocol.CLOSE_STATUS_CODE_ABNORMAL_CLOSE, "connection was closed uncleanly (%s)" % self.wasNotCleanReason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/autobahn/twisted/websocket.py", line 331, in _onClose
+    self.onClose(wasClean, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 81, in onClose
+    self.factory.on_close(self, code, reason)
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 657, in _on_close
+    self.on_close(self, code, reason)
+  File "save_data_conn3.py", line 93, in on_close
+    ws.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/kiteconnect/ticker.py", line 558, in stop
+    reactor.stop()
+  File "/home/tariqanwarph/zerodha/Zerodha/zerodha_env/lib/python3.6/site-packages/twisted/internet/base.py", line 711, in stop
+    raise error.ReactorNotRunning("Can't stop reactor that isn't running.")
+twisted.internet.error.ReactorNotRunning: Can't stop reactor that isn't running.
+
+conn3
+979
+conn_3 1970-01-01 05:30:00 979
+conn5
+979
+conn_5 1970-01-01 05:30:00 979
+[2021-12-15 09:05:26,443: INFO/MainProcess] Task publish_pubsub_1.insert_db[d3647b2f-8395-436c-a24d-698a9043fabe] received
+[2021-12-15 09:05:26,493: WARNING/MainProcess] returning
+[2021-12-15 09:05:26,493: WARNING/MainProcess] 
+
+[2021-12-15 09:05:26,686: INFO/MainProcess] Task publish_pubsub_1.insert_db[783dcd54-836c-4e0e-b402-0c455a581298] received
+[2021-12-15 09:05:26,745: INFO/MainProcess] Task publish_pubsub_1.insert_db[20e8669d-4264-43b2-80d9-6e4b48f29c3f] received
+[2021-12-15 09:05:26,777: INFO/MainProcess] Task publish_pubsub_1.insert_db[68c03f73-22bd-4ff2-9cf9-5cf918529ed1] received
+[2021-12-15 09:05:26,806: WARNING/MainProcess] returning
+[2021-12-15 09:05:26,807: WARNING/MainProcess] 
+
+[2021-12-15 09:05:26,821: INFO/MainProcess] Task publish_pubsub_1.insert_db[e0635f43-cde7-4c71-90f6-7862f7df6ea4] received
+[2021-12-15 09:05:26,876: WARNING/MainProcess] returning
+[2021-12-15 09:05:26,876: WARNING/MainProcess] 
+
+[2021-12-15 09:05:26,923: WARNING/MainProcess] returning
+[2021-12-15 09:05:26,923: WARNING/MainProcess] 
+
+[2021-12-15 09:05:26,995: WARNING/MainProcess] returning
+[2021-12-15 09:05:26,995: WARNING/MainProcess] 
+
+[2021-12-15 09:05:27,323: INFO/MainProcess] Task publish_pubsub_1.insert_db[d3647b2f-8395-436c-a24d-698a9043fabe] succeeded in 0.8319538509999802s: None
+[2021-12-15 09:05:27,327: INFO/MainProcess] Task publish_pubsub_1.insert_db[783dcd54-836c-4e0e-b402-0c455a581298] succeeded in 0.5240847790000771s: None
+[2021-12-15 09:05:27,346: INFO/MainProcess] Task publish_pubsub_1.insert_db[68c03f73-22bd-4ff2-9cf9-5cf918529ed1] succeeded in 0.47064839699999084s: None
+[2021-12-15 09:05:27,459: INFO/MainProcess] Task publish_pubsub_1.insert_db[e0635f43-cde7-4c71-90f6-7862f7df6ea4] succeeded in 0.4646226510000133s: None
+[2021-12-15 09:05:27,487: INFO/MainProcess] Task publish_pubsub_1.insert_db[20e8669d-4264-43b2-80d9-6e4b48f29c3f] succeeded in 0.5783526740000298s: None
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn1.py
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn4.py
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn3.py
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_6 --concurrency=1  --loglevel=info -P  eventlet -n worker6@%h
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn2.py
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn6.py
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/ticker" && python save_data_conn5.py
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_5 --concurrency=1  --loglevel=info -P  eventlet -n worker5@%h
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_3 --concurrency=1  --loglevel=info -P  eventlet -n worker3@%h
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_2 --concurrency=1  --loglevel=info -P  eventlet -n worker2@%h
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_7 --concurrency=1  --loglevel=info -P  eventlet -n worker1@%h
+Exiting cd "/home/tariqanwarph/zerodha/Zerodha/src/publish_database" && celery -A publish_pubsub_1  worker -Q conn_4 --concurrency=1  --loglevel=info -P  eventlet -n worker4@%h

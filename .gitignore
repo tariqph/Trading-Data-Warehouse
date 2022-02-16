@@ -1,5 +1,6 @@
 # Virtual Env
-zerodaha_venv/
+zerodaha_env/
+zerodaha_new_env/
 
 # Output Data
 Data/Output/
@@ -19,3 +20,7 @@ db,sqlite3
 
 # Logs
 logs/
+
+# temporary files with ticker data for roll forwarding and high low comparisons
+temp_cache/
+high_low_files/
