@@ -120,7 +120,7 @@ print(len(instrument_list))
 # Filename for the connection details
 # filename = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..","database.ini"))
 filename = os.path.abspath(os.path.join(os.path.dirname(__file__), "..","..",
-                                        config['access_files']['api_two']))
+                                        config['access_files']['api_three']))
 kws = access_token(filename = filename, type = 'kws')
 
 # kws = KiteTicker(db['api_key'], db['access_token'])

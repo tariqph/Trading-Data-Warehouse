@@ -35,7 +35,7 @@ filenames = [os.path.abspath(os.path.join(os.path.dirname(__file__), "..",
     os.path.abspath(os.path.join(os.path.dirname(__file__),"..",
                                  "..",config['access_files']['api_three']))]
 
-auth_type = ['pin','pin','totp']
+auth_type = ['totp','totp','totp']
 section = 'zerodha'
 print("generating tokens")
 for filename , type in zip(filenames,auth_type):
@@ -92,7 +92,7 @@ for filename , type in zip(filenames,auth_type):
     print(totp.now())
     print(pin_user)
     
-    pin.send_keys(pin_user)
+    # pin.send_keys(pin_user)
     cont.click()
 
     time.sleep(2)

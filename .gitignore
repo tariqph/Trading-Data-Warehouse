@@ -11,6 +11,8 @@ Archive/
 gcloud/
 .vscode/
 database.ini
+database_pettem.ini
+database_hemant.ini
 db.ini
 test.ini
 
