@@ -23,6 +23,10 @@ db,sqlite3
 # Logs
 logs/
 
+#pycache
+__pycache__/
+rabbitmqadmin.1
+
 # temporary files with ticker data for roll forwarding and high low comparisons
 temp_cache/
 high_low_files/
