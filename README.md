@@ -7,4 +7,4 @@ On Cloud's side, the data is published on Cloud PubSub which is processed by Clo
 
 Below is a flowchart showing the data pipeline and services utilized.
 
-![data warehouse drawio (2)](https://user-images.githubusercontent.com/14332590/157233498-a50276ce-b9e4-4f21-8062-a63f555422b2.png)
+![data warehouse drawio (3)](https://user-images.githubusercontent.com/14332590/157233926-4d91c0ec-8ca7-4d58-8673-80e9462e60d5.png)
